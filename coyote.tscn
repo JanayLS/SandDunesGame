@@ -1,0 +1,142 @@
+[gd_scene load_steps=19 format=3 uid="uid://h463t8korqe8"]
+
+[ext_resource type="Script" path="res://cactus.gd" id="1_ecoy5"]
+[ext_resource type="Texture2D" uid="uid://c55j6rt7c2d0l" path="res://Mobs/Coyote/Coyote Front Sheet.png" id="2_eurj5"]
+[ext_resource type="Texture2D" uid="uid://b5afcdy1u0thp" path="res://Mobs/Coyote/Coyote Side Sheet.png" id="3_b6ueq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8eaa"]
+size = Vector2(24, 52)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oerm7"]
+radius = 145.031
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34r20"]
+size = Vector2(35, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kc7xq"]
+size = Vector2(32, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ne18"]
+atlas = ExtResource("2_eurj5")
+region = Rect2(0, 210, 60, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbiha"]
+atlas = ExtResource("2_eurj5")
+region = Rect2(0, 0, 67, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uybxr"]
+atlas = ExtResource("2_eurj5")
+region = Rect2(67, 0, 67, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cii07"]
+atlas = ExtResource("3_b6ueq")
+region = Rect2(0, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r82i4"]
+atlas = ExtResource("3_b6ueq")
+region = Rect2(70, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1nio"]
+atlas = ExtResource("3_b6ueq")
+region = Rect2(140, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxbdw"]
+atlas = ExtResource("3_b6ueq")
+region = Rect2(210, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqxdy"]
+atlas = ExtResource("3_b6ueq")
+region = Rect2(280, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmjmq"]
+atlas = ExtResource("3_b6ueq")
+region = Rect2(350, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3ock"]
+atlas = ExtResource("3_b6ueq")
+region = Rect2(420, 0, 70, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vngxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ne18")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_pbiha")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_uybxr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cii07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r82i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1nio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxbdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqxdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmjmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3ock")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Coyote" type="CharacterBody2D"]
+script = ExtResource("1_ecoy5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -0.5)
+shape = SubResource("RectangleShape2D_t8eaa")
+
+[node name="playerdetection" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerdetection"]
+position = Vector2(16, -9)
+shape = SubResource("CircleShape2D_oerm7")
+
+[node name="PlayerDeath" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeath"]
+position = Vector2(5.5, -7)
+shape = SubResource("RectangleShape2D_34r20")
+
+[node name="PlayerCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
+position = Vector2(6, 3)
+shape = SubResource("RectangleShape2D_kc7xq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(15, 1)
+scale = Vector2(1.31429, 1.27143)
+sprite_frames = SubResource("SpriteFrames_vngxr")
+animation = &"death"
+
+[connection signal="body_entered" from="playerdetection" to="." method="_on_playerdetection_body_entered" flags=18]
+[connection signal="body_exited" from="playerdetection" to="." method="_on_playerdetection_body_exited" flags=18]
+[connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered" flags=18]
+[connection signal="body_entered" from="PlayerCollision" to="." method="_on_player_collision_body_entered" flags=18]

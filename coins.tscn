@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi0mm51ljkppf"]
+
+[ext_resource type="Script" path="res://coins.gd" id="1_elvec"]
+[ext_resource type="Texture2D" uid="uid://oiye2ps357e2" path="res://NinjaAdventure/Items/Potion/WaterPot.png" id="2_tr8ro"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v032r"]
+radius = 7.07107
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yu3e"]
+atlas = ExtResource("2_tr8ro")
+region = Rect2(0, 0, 9, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jixc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yu3e")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_elvec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -2)
+shape = SubResource("CircleShape2D_v032r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.625, -3.375)
+scale = Vector2(2.52778, 2.65909)
+sprite_frames = SubResource("SpriteFrames_4jixc")
+animation = &"idle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

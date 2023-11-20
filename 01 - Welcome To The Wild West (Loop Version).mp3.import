@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://rrvt0g68jfjs"
+path="res://.godot/imported/01 - Welcome To The Wild West (Loop Version).mp3-c5138382a6d4837ea0ba44fc2fbbedfb.mp3str"
+
+[deps]
+
+source_file="res://01 - Welcome To The Wild West (Loop Version).mp3"
+dest_files=["res://.godot/imported/01 - Welcome To The Wild West (Loop Version).mp3-c5138382a6d4837ea0ba44fc2fbbedfb.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

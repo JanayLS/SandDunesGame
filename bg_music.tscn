@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://80d7krb7iy3m"]
+
+[ext_resource type="AudioStream" uid="uid://1efhu3h4fcsc" path="res://05 - Here's To The Pioneers (Loop Version).mp3" id="1_275cl"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_275cl")
+volume_db = 0.2
+autoplay = true

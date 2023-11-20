@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bff51y2su8vyv"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bq37ltre37rsu" path="res://parallax_background.tscn" id="2_cwh7a"]
+[ext_resource type="FontFile" uid="uid://co55ehtt1mif3" path="res://NicerNightie.ttf" id="3_28lks"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2rl4n"]
+font = ExtResource("3_28lks")
+font_size = 150
+font_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 467.0
+offset_top = 244.0
+offset_right = 742.0
+offset_bottom = 349.0
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 467.0
+offset_top = 369.0
+offset_right = 746.0
+offset_bottom = 478.0
+text = "Quit"
+
+[node name="BG" parent="." instance=ExtResource("2_cwh7a")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 285.0
+offset_top = 82.0
+offset_right = 976.0
+offset_bottom = 235.0
+text = "Sand  Dunes"
+label_settings = SubResource("LabelSettings_2rl4n")
+
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

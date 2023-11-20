@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://beqy4qrkgy3vx"
+path="res://.godot/imported/03 - First Encounter (Loop Version).mp3-f220b1c450188336ff1298c0d2305905.mp3str"
+
+[deps]
+
+source_file="res://03 - First Encounter (Loop Version).mp3"
+dest_files=["res://.godot/imported/03 - First Encounter (Loop Version).mp3-f220b1c450188336ff1298c0d2305905.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbopkpg1oyfbw"]
+
+[ext_resource type="Script" path="res://coins.gd" id="1_t7w1k"]
+[ext_resource type="Texture2D" uid="uid://b8hfow1tep06l" path="res://NinjaAdventure/Items/Food/Yakitori.png" id="2_xuosv"]
+[ext_resource type="Texture2D" uid="uid://dsjabyxq30t6o" path="res://NinjaAdventure/Items/Food/Sushi.png" id="3_nclai"]
+[ext_resource type="Texture2D" uid="uid://bwwn4fjr4joxr" path="res://NinjaAdventure/Items/Food/Noodle.png" id="4_ayvh6"]
+[ext_resource type="Texture2D" uid="uid://btgcijqkmc8r1" path="res://NinjaAdventure/Items/Food/Fish.png" id="5_58w1c"]
+[ext_resource type="Texture2D" uid="uid://xw45ohm0d7a5" path="res://NinjaAdventure/Items/Food/FortuneCookie.png" id="6_xcdtf"]
+[ext_resource type="Texture2D" uid="uid://pmodkp447dky" path="res://NinjaAdventure/Items/Food/Honey.png" id="7_71xat"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v032r"]
+radius = 7.07107
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l85lf"]
+animations = [{
+"frames": [{
+"duration": 0.7,
+"texture": ExtResource("2_xuosv")
+}, {
+"duration": 0.7,
+"texture": ExtResource("3_nclai")
+}, {
+"duration": 0.7,
+"texture": ExtResource("4_ayvh6")
+}, {
+"duration": 0.7,
+"texture": ExtResource("5_58w1c")
+}, {
+"duration": 0.7,
+"texture": ExtResource("6_xcdtf")
+}, {
+"duration": 0.7,
+"texture": ExtResource("7_71xat")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Food" type="Area2D"]
+script = ExtResource("1_t7w1k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -2)
+shape = SubResource("CircleShape2D_v032r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(28, -5)
+scale = Vector2(1.1875, 1.25)
+sprite_frames = SubResource("SpriteFrames_l85lf")
+animation = &"idle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered" flags=18]
